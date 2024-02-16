@@ -1,0 +1,74 @@
+/* .mainTitle Styles */
+.mainTitle h4 {
+    color: var(--dark-purple, #1e0f2e);
+    font-family: Mulish;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+  }
+  
+  .mainTitle p {
+    color: #000;
+    text-align: justify;
+    font-family: Mulish;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 21px;
+  }
+  
+  /* .row Styles */
+  .row h2 {
+    color: var(--green-blue, #2268aa);
+    font-family: Mulish;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+  
+  .row .teamName,
+  .row .teamPos {
+    color: #000;
+    text-align: center;
+    font-family: Mulish;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 21px;
+  }
+  
+  .row .teamPos,
+  .row .teamDesc {
+    color: #000;
+    text-align: center;
+    font-family: Mulish;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+  }
+  
+  .row .teamDesc {
+    color: #000;
+    text-align: center;
+    font-family: Mulish;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 19px;
+  }
+  
+  .row .imgCont {
+    width: fit-content;
+  }
+  
+
+  .mainDiv{
+    // height: 100vh;
+
+    .mainCont{
+      height: fit-content;
+    }
+  }

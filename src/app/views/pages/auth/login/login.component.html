@@ -1,0 +1,197 @@
+<div class="body">
+  <!-- <div class="row"> -->
+  <div
+    class="ribbon"
+    style="background-image: url('./assets/images/headerl.png')"
+  ></div>
+  <!-- </div> -->
+  <div class="row login-row">
+    <div
+      class="col-md-6 col-lg-5 col-xl-5 col-sm-7 d-flex justify-content-around flex-column"
+    >
+      <div class="logoCont">
+        <a routerLink="/standards/landing">
+          <img
+            class="img-fluid"
+            src="assets/images/TRA_Logo.png"
+            width="150"
+            height="50"
+            alt=""
+        /></a>
+      </div>
+      <div class="card card-login-container">
+        <div class="mt-2">
+          <h3>Welcome to our Quality Assurance Portal!</h3>
+          <p class="mt-2">
+            Ensure Standards, Certification & Registration in Tourism
+          </p>
+        </div>
+        <div class="card-login text-start pb-1 mt-4">
+          <form class="forms-sample text-left" [formGroup]="form">
+            <div class="mb-3">
+              <input
+                type="email"
+                class="inputs"
+                formControlName="email"
+                class="form-control"
+                id="email"
+                placeholder="Enter Email"
+              />
+              <small
+                class="text-danger"
+                *ngIf="
+                  form.get('email')?.touched &&
+                  form.get('email')?.hasError('required')
+                "
+                >Email is required</small
+              >
+              <small
+                class="text-danger"
+                *ngIf="
+                  form.get('email')?.touched &&
+                  form.get('email')?.hasError('email')
+                "
+                >Please key in a valid email</small
+              >
+            </div>
+
+            <div class="mb-3">
+              <div class="input-group mb-3">
+                <input
+                  [type]="inputType"
+                  class="inputs"
+                  formControlName="password"
+                  class="form-control"
+                  placeholder="Enter password"
+                  id="password"
+                  aria-label="password"
+                />
+                <div
+                  class="input-group-prepend"
+                  style="cursor: pointer"
+                  (click)="toggleShowPassword()"
+                >
+                  <span class="input-group-text" *ngIf="!this.showingPassword"
+                    ><i class="mdi mdi-eye"></i
+                  ></span>
+                  <span class="input-group-text" *ngIf="this.showingPassword"
+                    ><i class="mdi mdi-eye-off"></i
+                  ></span>
+                </div>
+              </div>
+              <small
+                class="text-danger"
+                *ngIf="
+                  form.get('password')?.touched &&
+                  form.get('password')?.hasError('required')
+                "
+                >Password is required</small
+              >
+              <small
+                class="text-danger"
+                *ngIf="
+                  form.get('password')?.touched &&
+                  form.get('password')?.hasError('minlength')
+                "
+                >Password isn't long enough, minimum of 6 characters</small
+              >
+            </div>
+            <div class="mb-1" *ngIf="loginResponse$ | async">
+              <ngb-alert
+                [type]="'success'"
+                (close)="(false)"
+                class="my-custom-success-alert"
+              >
+                <strong>Login Successfully!!</strong>
+              </ngb-alert>
+            </div>
+            <div class="loginBtn">
+              <button
+                [disabled]="!form.valid"
+                (click)="onSubmit($event)"
+                class="btn btn-block login-btn transition"
+                type="submit"
+              >
+                <span>SIGN IN</span>
+              </button>
+            </div>
+            <ngb-alert
+              [type]="'danger'"
+              *ngIf="hasError"
+              (close)="(false)"
+              class="error-alert mt-2"
+            >
+              <strong>Login Error!!!</strong>
+              {{ errorMsg }}
+            </ngb-alert>
+            <hr />
+            <div
+              class="mt-1 d-flex justify-content-between"
+              style="margin-top: -10%"
+            >
+              <div class="d-flex justify-content-between">
+                <input
+                  class="form-check-input mt-2"
+                  type="checkbox"
+                  style="width: 12px; height: 12px"
+                />
+                <p class="m-1" style="font-family: Mulish; font-weight: 400">
+                  Remember me
+                </p>
+              </div>
+
+              <p class="text-light mt-1">
+                <a
+                  routerLink="/auth/forgot-password"
+                  style="text-decoration: none"
+                  class="transition text-light fw-bold"
+                  >Forgot Password?</a
+                >
+              </p>
+            </div>
+            <div class="d-flex justify-content-center mt-3">
+              <p class="text-light">
+                Is Your Account Active?
+                <a
+                  routerLink="/auth/activate"
+                  style="text-decoration: underline"
+                  class="transition text-light fw-bold"
+                >
+                  Activate Account
+                </a>
+              </p>
+            </div>
+          </form>
+          <p *ngIf="isLoading">
+            <ngb-progressbar
+              type="primary"
+              [value]="95"
+              [striped]="true"
+              [animated]="true"
+            ></ngb-progressbar>
+          </p>
+        </div>
+      </div>
+      <div class="logoFooter">
+        <button class="btn btn-md">
+          <a
+            href="https://www.tra.go.ke/"
+            style="text-decoration: none; text-transform: none"
+            target="_blank"
+            class="transition text-light"
+          >
+            VISIT: WWW.TRA.GO.KE
+          </a>
+        </button>
+      </div>
+    </div>
+    <div
+      class="card col-md-6 col-lg-7 col-xl-7 col-sm-5"
+      style="
+        background-image: url('assets/images/login_bg.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+      "
+    ></div>
+  </div>
+</div>

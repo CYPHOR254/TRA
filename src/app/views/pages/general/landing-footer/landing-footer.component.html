@@ -1,0 +1,39 @@
+<div
+  class="card d-flex justify-content-between mainCont align-items-center flex-row"
+>
+  <app-feedback
+    *ngIf="showLeaveCommentForm"
+    (eventName)="toggleLeaveCommentForm()"
+  ></app-feedback>
+
+  <div>
+    <img
+      class="img-fluid"
+      src="assets/images/TRA_Logo.png"
+      width="115"
+      height="60"
+      alt="logo"
+    />
+  </div>
+  <div class="linksCont d-flex flex-row">
+    <a routerLink="" class="transition">Home</a>
+    <a routerLink="/" class="" class="transition">Tourism ACT 2011</a>
+    <a routerLink="/" class="transition">Tourism Regulations 2014</a>
+  </div>
+  <div class="d-flex justify-content-end">
+    <div
+      (click)="toggleLeaveCommentForm()"
+      class="card-header d-flex align-items-center border-0 chatIconCont"
+    >
+      <p>
+        <img
+          class="img-fluid"
+          src="assets/images/chat.png"
+          width="30"
+          height="20"
+          alt="logo"
+        />
+      </p>
+    </div>
+  </div>
+</div>

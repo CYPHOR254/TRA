@@ -1,0 +1,124 @@
+<div class="mainCont">
+  <app-landing-header></app-landing-header>
+
+  <div class="card">
+    <div class="row">
+      <div class="col-md-12 col-lg-12 col-xl-12 col-sm-12">
+        <div class="carousel-form-container">
+          <div class="carousel-container">
+            <owl-carousel-o [options]="autoPlayOptions">
+              <ng-template
+                carouselSlide
+                *ngFor="let slide of slidesStore"
+                [id]="slide.id"
+              >
+                <div class="w-100">
+                  <img
+                    class="card-img-top img-fluid"
+                    style="width: 100%"
+                    [src]="slide.src"
+                    [title]="slide.title"
+                  />
+                </div>
+              </ng-template>
+            </owl-carousel-o>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="mt-3 card-header d-flex justify-content-between">
+        <div class="card-title">
+          <h3>
+            Standard development is an integral part of sustainable tourism
+            development.
+          </h3>
+        </div>
+        <a routerLink="/standards/all-standards">View all Standards</a>
+      </div>
+
+      <div class="card-body mx-5">
+        <div class="border-0 box-shadow">
+          <div class="grid-margin stretch-card">
+            <div class="row w-100">
+              <ng-container *ngFor="let std of standards">
+                <div
+                  class="mt-3 pt-2 col-md-4 col-sm-6 col-lg-3 col-xl-3"
+                  *ngIf="standards.length > 0"
+                >
+                  <div [id]="std.id" (click)="viewStandard(std.id)">
+                    <div class="mainImgCont">
+                      <div>
+                        <img
+                          class="img-fluid card-img-top"
+                          [src]="std.previewImageUrl"
+                          (error)="handleImageError($event)"
+                        />
+                      </div>
+                      <div
+                        class="iconCont d-flex justify-content-center align-items-center border-0 box-shadow"
+                      >
+                        <img
+                          class="img-fluid"
+                          [src]="std.previewIconUrl"
+                          [style.width]="std.iconWidth"
+                          [style.height]="std.iconHeight"
+                          (error)="
+                            handleImageError($event, 'assets/images/icon.png')
+                          "
+                        />
+                      </div>
+                    </div>
+                    <br />
+                    <div>
+                      <div class="my-4 titleCont">
+                        <p>
+                          {{ std.title }}
+                        </p>
+                      </div>
+                      <div class="descCont">
+                        <p>
+                          {{ std.description }}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+              <div *ngIf="standards.length < 1">
+                <div>
+                  <div>
+                    <div class="my-4 titleCont">
+                      <p>No Standard(s) Available</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row miniFooter">
+    <div
+      class="card col-md-12 col-lg-12 col-xl-12 col-sm-12"
+      style="background-image: url('./assets/images/headerl.png')"
+    >
+      <h2>
+        Ignite Success in Tourism: Align with Our Benchmark Minimum Standards.
+      </h2>
+      <p>
+        Access all develop Minimum Standards for regulated tourism enterprises
+        in collaboration with stakeholders and relevant agencies. Align with our
+        benchmarks to gain a competitive edge, enhance customer satisfaction,
+        and experience the transformative power of excellence in tourism.
+        Partner with us for a future of unparalleled success.
+      </p>
+    </div>
+  </div>
+
+  <app-landing-footer></app-landing-footer>
+</div>

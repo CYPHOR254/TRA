@@ -1,0 +1,13 @@
+.footer {
+    padding: 20px; /* Add padding to the footer */
+  
+    @media only screen and (max-width: 767px) {
+      /* Styles for screens smaller than 768px (e.g., mobile devices) */
+      flex-direction: column; /* Stack items vertically */
+      text-align: center; /* Center align text */
+      overflow: hidden;
+    }
+  
+    /* Additional styles for larger screens can be added here */
+  }
+  

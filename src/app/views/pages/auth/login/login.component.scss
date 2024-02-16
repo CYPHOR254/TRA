@@ -1,0 +1,134 @@
+.body {
+  background-color: #efefef;
+
+  .ribbon {
+    max-width: 100%;
+    height: 30px;
+    background-repeat: repeat-x;
+    background-size: 100% 100%;
+  }
+
+  .logoCont {
+    padding-top: 30px;
+    padding-left: 30px;
+    a {
+      img {
+        position: absolute;
+      }
+    }
+  }
+
+  .card-login-container {
+    display: flex;
+    justify-content: center;
+    margin: 16% 10%;
+    padding: 19px;
+    box-shadow: 0 1px 3px #fcfdfe;
+    max-height: 485px;
+    background-color: #2268aa !important;
+    border-radius: 24px;
+
+    h3 {
+      font-family: Mulish;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 21px;
+      line-height: 30px;
+      color: #f8f8f8;
+    }
+
+    p {
+      font-family: Mulish;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 17px;
+      line-height: 25px;
+      color: #f8f8f8;
+    }
+  }
+
+  .loginBtn {
+    button {
+      width: 100%;
+      border: none;
+
+      span {
+        color: white;
+      }
+    }
+  }
+
+  .logoFooter {
+    padding-bottom: 15px;
+    padding-left: 15px;
+    justify-content: center;
+    margin-top: -7%;
+
+    button {
+      background-color: #6d36a8;
+      color: #f8f8f8;
+      border-radius: 8px;
+    }
+  }
+}
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+.login-btn {
+  color: #ffffff;
+  background-color: #f7941d;
+  border-radius: 8px;
+}
+
+.inputs {
+  width: 100%;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+}
+.login-row {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  height: 120vh;
+}
+.body {
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.card-login {
+  color: #f3f6f9;
+  width: 100% !important;
+}
+
+.my-custom-success-alert {
+  border: none;
+  color: green;
+  background-color: white;
+  font-size: 16px;
+}
+
+.error-alert {
+  border: none;
+  color: red;
+  background-color: white;
+  font-size: 16px;
+}

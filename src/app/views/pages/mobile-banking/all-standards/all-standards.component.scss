@@ -1,0 +1,55 @@
+.mainCont {
+  height: 100vh;
+
+  .mainTitle {
+    color: #1e0f2e;
+    font-family: "Mulish";
+    font-weight: 600;
+    font-size: 20px;
+    text-transform: none;
+  }
+
+  .card-img-top {
+    height: 90px;
+    width: 600px;
+    border-top-left-radius: 13px;
+    border-top-right-radius: 13px;
+  }
+
+  .iconCont {
+    img {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      margin-left: -15%;
+    //   margin-top: -11%;
+      border-radius: 50%;
+      background-color: #d0ddf0;
+      padding: 4px;
+    }
+  }
+
+  .stdTitle {
+    color: #2268aa;
+    font-family: "Muli";
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 21px;
+  }
+
+  .stdDesc{
+    color: #1e0f2e;
+    font-family: 'Muli';
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 21px;
+  }
+
+  .noStdCont{
+    color: #a90202;
+    font-family: 'Mulish';
+    font-weight: 600;
+    font-size: 16px;
+    text-transform: none;
+  }
+}

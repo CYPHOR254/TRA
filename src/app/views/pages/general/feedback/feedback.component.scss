@@ -1,0 +1,25 @@
+.modal-container {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  position: fixed;
+  top: 20%;
+  z-index: 10;
+  background-color: #d0ddf0;
+  border-radius: 8px;
+
+  .feedbackMain {
+    .feedbackHeader {
+      background-color: #d0ddf0;
+      font-family: "Mulish";
+      font-weight: 900;
+      border-radius: 4px;
+      text-align: center;
+
+      h4,button {
+        color: #6d36a8;
+        font-size: 19px;
+      }
+    }
+  }
+}

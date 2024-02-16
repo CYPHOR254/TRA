@@ -1,0 +1,100 @@
+<div class="mainCont">
+  <app-landing-header></app-landing-header>
+
+  <div class="card bg-light mainCard">
+    <div class="row">
+      <div
+        class="card bannerCont col-md-12 col-lg-12 col-xl-12 col-sm-12"
+        style="background-image: url('./assets/images/headerl.png')"
+      >
+        <h2>
+          Ignite Success in Tourism: Align with Our Benchmark Minimum Standards.
+        </h2>
+      </div>
+    </div>
+    <div class="card border-0 box-shadow subCard">
+      <div class="d-flex justify-content-between mx-4 my-2">
+        <h3>All Standards</h3>
+
+        <div>
+          <select
+            class="form-select p-1"
+            id="request_category"
+            name="request_category"
+            (change)="onSubClassChange($event)"
+          >
+            <option value="All">All</option>
+            <ng-container *ngFor="let data of SubClassData">
+              <option
+                *ngFor="let subclass of data.subclasses"
+                [value]="subclass.subClassName"
+              >
+                {{ subclass.subClassName }}
+              </option>
+            </ng-container>
+          </select>
+        </div>
+      </div>
+
+      <div
+        class="card-body"
+        *ngIf="filteredStandards.length > 0; else noStandardsMessage"
+      >
+        <div class="border-0 box-shadow mx-5">
+          <div class="grid-margin stretch-card">
+            <div class="row w-100">
+              <ng-container *ngFor="let std of filteredStandards">
+                <div class="mt-1 pt-1 col-md-4 col-sm-6 col-lg-3 col-xl-3">
+                  <div [id]="std.id" (click)="viewStandard(std.id)">
+                    <div class="mainImgCont">
+                      <div>
+                        <img
+                          class="img-fluid card-img-top"
+                          [src]="std.previewImageUrl"
+                          (error)="handleImageError($event)"
+                        />
+                      </div>
+                      <div
+                        class="iconCont d-flex justify-content-center align-items-center border-0 box-shadow"
+                      >
+                        <img
+                          class="img-fluid"
+                          [src]="std.previewIconUrl"
+                          [style.width]="std.iconWidth"
+                          [style.height]="std.iconHeight"
+                          (error)="
+                            handleImageError($event, 'assets/images/icon.png')
+                          "
+                        />
+                      </div>
+                    </div>
+                    <br />
+                    <div>
+                      <div class="my-4 titleCont">
+                        <p>
+                          {{ std.title }}
+                        </p>
+                      </div>
+                      <div class="descCont">
+                        <p>
+                          {{ std.description }}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-landing-footer></app-landing-footer>
+</div>
+<ng-template #noStandardsMessage>
+  <h5 class="d-flex justify-content-center noStdText">
+    No Standards For This Class Enterprise
+  </h5>
+</ng-template>

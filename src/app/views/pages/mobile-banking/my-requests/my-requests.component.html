@@ -1,0 +1,87 @@
+<div class="d-flex px-3 justify-content-between align-items-start flex-column">
+  <div>
+    <h4 class="mainTitle">All Requests</h4>
+  </div>
+
+  <div class="card mainCont">
+    <div class="row" style="z-index: 0">
+      <div class="col-md-12 col-lg-12 col-xl-12 col-sm-12">
+        <div class="box-shadow">
+          <img
+            class="card-img-top img-fluid"
+            src="assets/images/requests.png"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="descCont">
+      <div class="landing">
+        <div>
+          <h1>Pre- Qualification Assessment Checklist</h1>
+          <p>
+            Pre-qualification Assessment; is a prerequisite procedure under the
+            EAC Standards Criteria for Classification of Hotels and Restaurants.
+            Hotels Owners/property managers must carry out self-assessment based
+            on each of the identified Essential Items listed on the checklist to
+            ensure they attain the prerequisite 100% to qualify for
+            classification and star rating. Essential Items; refers to both
+            statutory requirements and basic operational standard practices that
+            guarantees safety and comfort of both local and international guests
+            in any hospitality establishment. The Items are crucial in the
+            protection and promotion of the well- being of guests, staff and the
+            property. Due to their significance, an establishment must score
+            100% overall in all of the listed Essential Items to qualify for
+            Classification and Grading Process.
+          </p>
+          <button
+            class="btn btn-md login-btn transition mt-1 mb-2 reqBtn"
+            type="submit"
+          >
+            <a
+              style="text-decoration: none"
+              routerLink="/tra-client/make-request"
+              class="transition"
+            >
+              <span>NEW REQUEST</span></a
+            >
+          </button>
+        </div>
+        <div *ngIf="requests.length > 0">
+          <div
+            class="row d-flex justify-content-between mt-3"
+            *ngFor="let std of requests"
+          >
+            <div class="col">
+              <p class="title">Ref No:</p>
+              <h2 class="content">{{ std.requestRef }}</h2>
+            </div>
+            <div class="col">
+              <p class="title">Request Type</p>
+              <h2 class="content">{{ std.requestType }}</h2>
+            </div>
+            <div class="col">
+              <p class="title">Date Created</p>
+              <h2 class="content">{{ formatDate(std.createdOn) }}</h2>
+            </div>
+            <div class="col">
+              <p class="title">Status</p>
+              <h2 class="content">
+                <img
+                  class="card-img-top img-fluid mr-1"
+                  [src]="getSanitizedStatusImage(std.status)"
+                />{{ std.status }}
+              </h2>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="requests.length === 0">
+          <h5 class="d-flex justify-content-start mt-2 noReqCont">
+            No REQUESTS Made.
+          </h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,99 @@
+/* Main Container */
+.mainCont {
+    background-color: #efefef;
+
+    .mainImgCont{
+        img{
+            height: 90px;
+            width: 600px;
+            border-top-left-radius: 13px;
+            border-top-right-radius: 13px;
+        }
+    }
+  }
+  
+  /* Card Title */
+  .mainCont .card-title h3 {
+    color: #6d36a8;
+    font-family: "Muli";
+    font-weight: 600;
+    font-size: 19px;
+    text-transform: none;
+  }
+  
+  /* Card Header */
+  .mainCont .card-header a {
+    cursor: pointer;
+    color: #6d36a8;
+    font-family: "Muli";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+  }
+  
+  /* Main Image Container */
+  .mainCont .mainImgCont {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  /* Icon Container */
+  .mainCont .mainImgCont .iconCont {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    margin-left: 4%;
+    margin-top: -8%;
+    border-radius: 50%;
+    background-color: #d0ddf0;
+  }
+  
+  /* Title Container */
+  .mainCont .titleCont {
+    cursor: pointer;
+  }
+  
+  /* Title Text */
+  .mainCont .titleCont p {
+    color: #2268aa;
+    font-family: "Muli";
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 21px;
+  }
+  
+  /* Description Container */
+  .mainCont .descCont p {
+    color: #1e0f2e;
+    font-family: "Muli";
+    font-weight: 400;
+    font-size: 12px;
+  }
+  
+  /* Mini Footer */
+  .mainCont .miniFooter div {
+    // background-repeat: repeat-y;
+    background-size: 100% auto;
+    padding: 2% 6%;
+    color: #f8f8f8;
+    max-width: 100% !important;
+  }
+  
+  /* Mini Footer Heading */
+  .mainCont .miniFooter div h2 {
+    font-family: "Mulish";
+    line-height: 25px;
+    font-weight: 600;
+    font-size: 25px;
+  }
+  
+  /* Mini Footer Text */
+  .mainCont .miniFooter div p {
+    font-family: "Mulish";
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+    margin-top: 10px;
+  }
+  

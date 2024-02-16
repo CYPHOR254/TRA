@@ -1,0 +1,138 @@
+/* Typography */
+.content {
+  overflow: hidden;
+  color: var(--green-blue, #2268aa);
+  font-family: Mulish;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+
+  img {
+    height: 10px;
+    width: 10px;
+  }
+}
+
+.login-btn {
+  color: #ffffff;
+  background-color: #f7941d;
+  border-radius: 8px;
+}
+
+.login-btn span {
+  color: var(--white, #fff);
+  text-align: center;
+  font-family: Mulish;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 1.12px;
+  text-transform: uppercase;
+}
+
+.noResCont {
+  color: #a90202;
+  font-family: "Mulish";
+  font-weight: 600;
+  font-size: 15px;
+  text-transform: none;
+}
+
+.appealBtn {
+  background-color: #f8f8f8;
+  border: 2px solid var(--green-blue, #2268aa);
+  border-radius: 64px;
+}
+
+.appealBtn span {
+  color: var(--violet-blue, #2766bf);
+  text-align: center;
+  font-family: Mulish;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 1.12px;
+  text-transform: uppercase;
+}
+
+/* Appeal Form Styles */
+.appealForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  border-radius: 8px 8px 8px 8px;
+  width: 400px !important;
+}
+
+/* Deactivated Button Styles */
+button.deactivated {
+  pointer-events: none; /* Disable pointer events to make the button non-clickable */
+  opacity: 0.5; /* Reduce opacity to visually indicate that the button is inactive */
+}
+
+/* Main Content Styles */
+.mainCont {
+  // height: 100vh;
+  padding: 5px;
+
+  img {
+    max-width: 100%;
+    border-radius: 16px;
+  }
+
+  /* Card Container Styles */
+  .cardCont {
+    margin-top: -7%;
+    z-index: 1;
+    /* Landing Styles */
+    .landing {
+      // position: absolute;
+      padding: 16px 24px;
+      align-items: center;
+      border-radius: 16px;
+      background: #fff;
+      width: 90%;
+      margin-left: 5%;
+      // margin-top: 30%;
+
+      h1 {
+        color: var(--grape-tra, #6d36a8);
+        font-family: Mulish;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 24px;
+      }
+
+      p {
+        color: #000;
+        text-align: justify;
+        font-family: Mulish;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 21px;
+      }
+    }
+  }
+}
+
+/* Main Title Styles */
+.mainTitle {
+  color: var(--dark-purple, #1e0f2e);
+  font-family: Muli;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 26px;
+}

@@ -1,0 +1,208 @@
+<div
+  class="d-flex px-3 justify-content-between align-items-start flex-column h-100"
+>
+  <div>
+    <h4 class="my-2 mainTitle">Reports & Results</h4>
+  </div>
+
+  <div class="card w-100 mainCont">
+    <div class="" style="z-index: 0">
+      <div class="col-md-12 col-lg-12 col-xl-12 col-sm-12">
+        <div class="card border-0 box-shadow">
+          <img
+            class="card-img-top img-fluid h-100"
+            src="assets/images/results.png"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="cardCont">
+      <div class="landing">
+        <div>
+          <div>
+            <h1 class="descTitle">
+              Elevate Your Business: Proven Excellence with Our Certifications,
+              Accreditations, & Classifications.
+            </h1>
+            <p>
+              The Authority conducts certification and accreditation processes
+              to assess tourism enterprises, ensuring conformity to set
+              standards. The marks of conformity signify consistent delivery of
+              quality products and services, fostering growth, sustainability,
+              and competitiveness in the tourism market. They classify and grade
+              tourism businesses in line with the EAC Classification System,
+              aiming to promote product and service quality for sustainable
+              development. The programs encourage stakeholder involvement and
+              transparent evaluation processes, benefiting businesses with
+              increased tourist arrivals and spending.
+            </p>
+          </div>
+        </div>
+        <br />
+        <div *ngIf="results.length > 0">
+          <div
+            class="row d-flex justify-content-between align-items-center mt-3"
+            *ngFor="let std of results"
+          >
+            <div class="col">
+              <p class="title">Result No:</p>
+              <h2 class="content">{{ std.resultRef }}</h2>
+            </div>
+
+            <div class="col">
+              <p class="title">Request Type</p>
+              <h2 class="content">{{ std.taskType }}</h2>
+            </div>
+            <div class="col">
+              <p class="title">Date Created</p>
+              <h2 class="content">{{ formatDate(std.createdOn) }}</h2>
+            </div>
+            <div class="col" *ngIf="std.task_type === 'ACCREDITATION'">
+              <p class="title">Score</p>
+              <h2 class="content">{{ std.score }}</h2>
+            </div>
+            <div class="col" *ngIf="std.task_type === 'CLASSIFICATION'">
+              <p class="title">Rating</p>
+              <h2 class="content">
+                <ng-container *ngFor="let item of [].constructor(std.rating)">
+                  <img
+                    class="card-img-top img-fluid mr-1 mb-1"
+                    src="assets/images/star.jpg"
+                  />
+                </ng-container>
+              </h2>
+            </div>
+            <div class="col">
+              <p class="title">Appeal Status</p>
+              <h2 class="content" *ngIf="std.status; else noAppealText">
+                {{ std.status !== "APPEALED" ? "NOT APPEALED" : std.status }}
+              </h2>
+              <ng-template #noAppealText>
+                <span class="content"><b>No Appeal</b></span>
+              </ng-template>
+            </div>
+            <div class="mt-2 col">
+              <button
+                class="btn btn-md login-btn transition"
+                (click)="downloadCertificate(std.downloadUrl)"
+                type="submit"
+              >
+                <a style="text-decoration: none" class="transition">
+                  <span>DOWNLOAD REPORT</span></a
+                >
+              </button>
+            </div>
+            <ng-container>
+              <div class="mt-1 col">
+                <button
+                  class="btn btn-md transition appealBtn"
+                  *ngIf="calculateAppealButtonVisibility(std)"
+                  (click)="toggleAppealForm(std)"
+                  [disabled]="std.status == 'APPEALED'"
+                  type="button"
+                >
+                  <a style="text-decoration: none" class="transition">
+                    <span>
+                      {{ getAppealButtonText(std.status, std.appealStatus) }}
+                    </span>
+                  </a>
+                </button>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+        <div *ngIf="results.length === 0">
+          <h5 class="d-flex justify-content-start noResCont">
+            No Report Uploaded Yet.
+          </h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-container *ngIf="showAppealForm">
+  <div class="appealForm">
+    <div class="appeal w-100">
+      <div
+        style="
+          background: var(--seasalt, #f8f8f8);
+          border-radius: 8px 8px 8px 8px;
+        "
+      >
+        <div
+          class="d-flex justify-content-between align-items-center"
+          style="
+            background-color: #d0ddf0;
+            font-family: 'Mulish';
+            font-weight: 900;
+            border-radius: 4px;
+            height: 50px;
+          "
+        >
+          <h4
+            class="text-start mt-3 p-2"
+            style="color: #6d36a8; font-size: 17px"
+          >
+            Reason For Appealing
+          </h4>
+          <div>
+            <button
+              type="button"
+              class="btn fs-2"
+              (click)="hideAppealForm()"
+              style="color: #6d36a8; font-size: 20px; margin-top: -5%"
+            >
+              &times;
+            </button>
+          </div>
+        </div>
+        <article class="">
+          <form
+            class="mt-1"
+            [formGroup]="formR"
+            (ngSubmit)="raiseAppeal(appealId)"
+            class="row px-3"
+          >
+            <div class="tab-content col-12 border-0">
+              <div class="form-group mt-2">
+                <textarea
+                  placeholder="Your Reason*"
+                  formControlName="reason"
+                  id="reason"
+                  cols="15"
+                  rows="3"
+                  class="form-control border-0 validation-field text"
+                ></textarea>
+                <!-- <input formControlName="reason" type="text" class="form-control validation-field border-0" id="reason"
+                    placeholder="Your Reason*"> -->
+                <small
+                  class="text-danger"
+                  *ngIf="fs.reason.touched && fs.reason.errors?.required"
+                  >Field Required</small
+                >
+              </div>
+              <div class="col-12 bg-white text-center py-1 mt-3 mb-2">
+                <button
+                  [disabled]="!formR.valid"
+                  style="width: 100%; border: none"
+                  class="btn btn-block login-btn transition"
+                  type="submit"
+                >
+                  <span style="color: white">SEND</span
+                  ><img
+                    *ngIf="isLoading"
+                    class="pl-2"
+                    src="assets/images/loading.gif"
+                    alt="loading-gif"
+                  />
+                </button>
+              </div>
+            </div>
+          </form>
+        </article>
+      </div>
+    </div>
+  </div>
+</ng-container>

@@ -1,0 +1,124 @@
+<div class="container">
+  <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin mt-3">
+    <div>
+      <h4 class="mb-3 mb-md-0 dashTitle">
+        Unlocking Efficiency with Customer Care Self Service
+      </h4>
+    </div>
+  </div>
+
+  <div class="card mainCont">
+    <div class="" style="z-index: 0">
+      <div class="col-md-12 col-lg-12 col-xl-12 col-sm-12">
+        <div class="image-container card border-0">
+          <img class="card-img-top img-fluid h-100" [src]="uploadedImageUrl" (error)="handleImageError()" />
+          <div *ngIf="uploadedImageUrl">
+            <div class="label-container">
+              <label for="imageUpload" class="input-container active">
+                <img class="imgUpload card-img-top img-fluid" src="assets/images/sdb.png" />
+                <input type="file" id="imageUpload" (change)="handleImageUpload($event)" accept="image/*" />
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="dashDesc">
+      <div class="descCont d-flex justify-content-around flex-column">
+        <div class="row">
+          <div class="col-2 mt-1 p-1 iconCont">
+            <div>
+              <img class="card-img-top img-fluid" src="assets/images/icon.png" />
+            </div>
+          </div>
+          <div class="col">
+            <div class="d-flex flex-row  justify-content-between">
+              <div>
+                <p class="title">Enterprise</p>
+                <p class="content">{{ facilityData["enterprise"] }}</p>
+              </div>
+              <div>
+                <p class="title">Facility</p>
+                <p class="content">{{ facilityData["serviceCategoryName"] }}</p>
+              </div>
+              <div>
+                <p class="title">Email</p>
+                <p class="content">{{ facilityData["businessEmail"] }}</p>
+              </div>
+              <div>
+                <p class="title">Phone</p>
+                <p class="content">{{ facilityData["businessPhone"] }}</p>
+              </div>
+              <div>
+                <p class="title">Location</p>
+                <p class="content">{{ facilityData["location"] }}</p>
+              </div>
+            </div>
+            <!-- <div class="d-flex flex-row justify-content-between">
+            <div>
+              <p class="title">Town</p>
+              <h2 class="content">{{ facilityData["town"] }}</h2>
+            </div>
+            <div>
+              <p class="title">Street</p>
+              <h2 class="content">{{ facilityData["street"] }}</h2>
+            </div>
+            <div>
+              <p class="title">Building</p>
+              <h2 class="content">{{ facilityData["buildingName"] }}</h2>
+            </div>
+            <div>
+              <p class="title">Rooms</p>
+              <h2 class="content">{{ facilityData["room"] }}</h2>
+            </div>
+            <div>
+              <p class="title">Postal Address</p>
+              <h2 class="content">{{ facilityData["postalAddress"] }} - {{ facilityData["postalCode"] }}</h2>
+            </div>
+          </div> -->
+          </div>
+        </div>
+        <hr />
+        <div class="d-flex justify-content-between mt-3 mx-1">
+          <h2 class="certTitle">Download Certificate(s) Earned</h2>
+          <h2 class="noCertTitle" *ngIf="showCertificateMessage">
+            Certificate(s) Not Available
+          </h2>
+        </div>
+
+        <div *ngIf="results.length <= 0" class="mt-2 resCont">
+          <div class="row d-flex justify-content-center mt-2 resContDiv">
+            <h2>No Certificate(s) Available</h2>
+          </div>
+        </div>
+
+        <div *ngFor="let std of results" class="mt-2 resCont">
+          <div class="row d-flex justify-content-between mt-2 resContDiv">
+            <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2 d-flex justify-content-center">
+              <div class="card border-0 box-shadow">
+                <img class="card-img-top img-fluid" src="assets/images/certificate.png" />
+                <!-- <img class="img-fluid card-img-top" [src]="existingImage" style="height: 100px; width: 150px;" /> -->
+              </div>
+            </div>
+            <div class="col-md-7 col-sm-7 col-lg-7 col-xl-7 resDesc">
+              <p>
+                RESULT NO. <b> {{ std.resultRef }}</b>
+              </p>
+              <h2>
+                Tourism Regulatory Authority (TRA)
+                {{ std.taskType }}
+                Certificate Earned
+              </h2>
+              <h4>Certificate expires | {{ formatDate(std.createdOn) }}</h4>
+            </div>
+            <div class="col-md-3 col-sm-3 col-lg-3 col-xl-3 d-flex justify-content-end resDld">
+              <button class="btn btn-md login-btn" (click)="getCertificate(std)" [disabled]="loading">
+                <span> DOWNLOAD {{ std.taskType }} CERTIFICATE </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

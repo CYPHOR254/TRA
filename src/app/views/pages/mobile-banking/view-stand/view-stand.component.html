@@ -1,0 +1,249 @@
+<div class="body w-100" style="position: relative; background-color: #efefef">
+  <div class="card border-0 box-shadow p-1">
+    <div class="row">
+      <div class="col-md-12 col-lg-12 col-xl-12 col-sm-12">
+        <div class="image-container" style="position: relative">
+          <img
+            class="img-fluid card-img-top"
+            [src]="previewImageUrl"
+            (error)="handleImageError()"
+          />
+          <h2 class="image-text">
+            Ignite Success in Tourism: Align with Our Benchmark Minimum
+            Standards.
+          </h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="">
+      <div class="d-flex justify-content-start mt-4 px-5">
+        <div class="d-flex justify-content-between titleCont">
+          <h3 class="card-title">
+            {{ standard?.title }}
+          </h3>
+        </div>
+      </div>
+      <div class="px-5">
+        <div class="border-0 box-shadow">
+          <div class="grid-margin stretch-card">
+            <div class="row mt-4 w-100">
+              <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2">
+                <ng-container *ngIf="parts && parts.length > 0; else noParts">
+                  <div
+                    class="mt-2 cursor-pointer partCont"
+                    *ngFor="let part of parts; let i = index"
+                    (click)="showDescription(part)"
+                  >
+                    <h5
+                      class="card-title part-title"
+                      [id]="part.id + 'part'"
+                      aria-current="page"
+                    >
+                      Part {{ part.partOrder }} - {{ part.partTitle }}
+                    </h5>
+                  </div>
+                </ng-container>
+                <ng-container *ngIf="committee && committee.length > 0">
+                  <div
+                    class="mt-2 cursor-pointer partCont"
+                    (click)="showDescription('comm')"
+                  >
+                    <h5
+                      class="card-title part-title"
+                      aria-current="page"
+                      id="comm"
+                    >
+                      Technical Committee
+                    </h5>
+                  </div>
+                </ng-container>
+
+                <ng-template #noParts>
+                  <div>
+                    <h5 class="card-title partCont">No Part Configured</h5>
+                  </div>
+                </ng-template>
+              </div>
+              <div
+                class="col-md-7 col-sm-7 col-lg-7 col-xl-7"
+                *ngIf="!isCommittee"
+              >
+                <div>
+                  <div class="descTitle">
+                    <h3>
+                      {{ selectedPart?.partTitle }}
+                    </h3>
+                  </div>
+                  <div class="mt-1 descCont">
+                    <p [innerHTML]="selectedPart?.partDescription"></p>
+                  </div>
+                </div>
+                <div>
+                  <hr />
+                  <div
+                    class="w-100 my-1 d-flex justify-content-between"
+                    *ngFor="let comm of comments"
+                  >
+                    <p>
+                      {{ comm["comment"] }}
+                    </p>
+                    <p class="text-right">
+                      {{ comm["createdOn"].replace(" ", "T") | date }}
+                      <!-- <small *ngFor="let repl of comm['replies']" class="border border-1 text-right">
+                        <br />
+                        <strong>{{ repl["email"] }}</strong>
+                        <br />
+                        {{ repl["comment"] }} -
+                        <br />
+                        {{ repl["createdOn"].replace(" ", "T") | date }}
+                      </small> -->
+                    </p>
+                  </div>
+                  <form class="" [formGroup]="forms" class="row">
+                    <div
+                      class="tab-content col-12"
+                      style="background-color: #fff"
+                    >
+                      <div
+                        style="
+                          border-radius: 8px;
+                          border: 2px solid var(--lavender-web, #d0ddf0);
+                        "
+                      >
+                        <p
+                          class="p-2"
+                          style="
+                            color: var(--green-blue, #2268aa);
+                            font-family: Mulish;
+                            font-size: 15px;
+                            font-style: normal;
+                            font-weight: 700;
+                            line-height: 21px;
+                          "
+                        >
+                          Comments
+                        </p>
+                        <div class="form-group" style="margin-top: -3%">
+                          <input
+                            formControlName="comment"
+                            placeholder="Type Your Comment here..."
+                            type="text"
+                            class="form-control validation-field border-0"
+                            name="name"
+                            id="name"
+                          />
+                        </div>
+                      </div>
+                      <div
+                        class="col-12 text-center py-1 mt-3 mb-2 d-flex justify-content-start"
+                      >
+                        <button
+                          (click)="onSubmit()"
+                          style="border: none"
+                          class="btn btn-primary btn-block login-btn transition"
+                          type="submit"
+                        >
+                          <span
+                            style="
+                              color: var(--seasalt, #ffffff);
+                              text-align: center;
+                              font-family: Mulish;
+                              font-size: 14px;
+                              font-style: normal;
+                              font-weight: 700;
+                              line-height: normal;
+                              letter-spacing: 1.28px;
+                              text-transform: uppercase;
+                            "
+                            >SUBMIT</span
+                          ><img
+                            *ngIf="isLoading"
+                            class="pl-2"
+                            src="assets/images/loading.gif"
+                            alt="loading-gif"
+                          />
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div
+                class="col-md-7 col-sm-7 col-lg-7 col-xl-7"
+                *ngIf="isCommittee"
+              >
+                <div class="descTitle">
+                  <h3>Technical Committee Members</h3>
+                </div>
+                <div *ngFor="let comm of committee">
+                  <div
+                    class="d-flex flex-row justify-content-between w-75 m-auto"
+                  >
+                    <h3>
+                      {{ comm?.committeeName }}
+                    </h3>
+                    <small>{{ comm?.committeeInstitution }}</small>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="col-md-3 col-lg-3 col-sm-3 col-xl-3 border border-1 rounded"
+                style="padding: 10px; border: 1px #d0ddf0; border-radius: 8px"
+              >
+                <div class="p-1 m-1">
+                  <div *ngFor="let file of files; let i = index">
+                    <ng-container *ngIf="file.fileType == 'PDF'">
+                      <button
+                        class="btn btn-lg"
+                        style="
+                          background-color: #2268aa;
+                          font-family: Muli;
+                          align-items: center;
+                          color: #f8f8f8;
+                          font-weight: 700;
+                          border-radius: 4px;
+                          font-size: 15px;
+                        "
+                        (click)="
+                          downloadCertificate(file.filePath, file.fileType)
+                        "
+                      >
+                        DOWNLOAD STANDARD
+                      </button>
+                    </ng-container>
+                  </div>
+                </div>
+
+                <div class="p-1">
+                  <h4 class="termTitle">Definition of Terms</h4>
+                  <div>
+                    <p class="termDesc">
+                      For the purpose of this standard the following definitions
+                      shall apply:
+                    </p>
+                  </div>
+                </div>
+                <div style="color: #50287b" *ngFor="let term of terms">
+                  <!-- <h5 style="font-family: Muli;font-weight: 700;">A-la-carte:</h5>
+                      <p style="font-family: Muli;font-weight: 400">For the purpose of this standard the following
+                        definitions shall apply: means a menu in a restaurant that offers individual priced</p> -->
+                  <h5 class="termTitle mt-1">
+                    {{ term?.termTitle || "A-la-carte:" }}
+                  </h5>
+                  <p class="termDesc">
+                    {{
+                      term?.termDefinition ||
+                        "means a menu in a restaurant that offers individual priced"
+                    }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<div class="card box-shadow mainCont">
+  <div class="d-flex justify-content-start mt-3 px-3">
+    <div class="card-title mainTitle px-2">
+      <h5>All Classification Criteria</h5>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <div class="border-0 box-shadow">
+      <div class="grid-margin stretch-card px-1">
+        <div class="row">
+          <ng-container *ngIf="criterias.length > 0">
+            <div
+              [ngClass]="getColumnClass(criterias.length)"
+              class="mt-1 pt-1 cursor-pointer text-center"
+              *ngFor="let crt of criterias"
+            >
+              <div [id]="crt.id" (click)="openCriteriaInNewTab(crt)">
+                <div>
+                  <div class="w-100 pdfCont">
+                    <img
+                      class="img-fluid card-img-top"
+                      src="assets/images/pdf_4726010.png"
+                    />
+                  </div>
+                </div>
+                <br />
+                <div style="position: relative">
+                  <div class="mt-1">
+                    <p class="critName">
+                      {{ crt.criteriaName }}
+                    </p>
+                  </div>
+                  <div class="">
+                    <p class="critDesc">
+                      {{ crt.description }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+          <div *ngIf="criterias.length === 0">
+            <h5 class="d-flex justify-content-start mt-4 noCritCont">
+              No Criterias Available
+            </h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

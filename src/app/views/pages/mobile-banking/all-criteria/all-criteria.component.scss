@@ -1,0 +1,44 @@
+.mainCont {
+  height: 100vh;
+
+  .mainTitle {
+    h5 {
+      color: #1e0f2e;
+      font-family: "Mulish";
+      font-weight: 600;
+      font-size: 20px;
+      text-transform: none;
+    }
+  }
+
+  .pdfCont {
+    img {
+      // height: 150px;
+      // width: 300px;
+    }
+  }
+
+  .critName {
+    color: #2268aa;
+    font-family: "Muli";
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 21px;
+  }
+
+  .critDesc {
+    color: #1e0f2e;
+    font-family: "Muli";
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 21px;
+  }
+
+  .noCritCont {
+    color: #a90202;
+    font-family: "Mulish";
+    font-weight: 600;
+    font-size: 16px;
+    text-transform: none;
+  }
+}

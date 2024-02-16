@@ -1,0 +1,201 @@
+<div
+  class="d-flex px-4 flex-wrap mainDiv"
+>
+  <div class="mainTitle">
+    <h4 class="mb-3 mb-md-0">Our Team</h4>
+    <p class="mt-2 mb-3">
+      At Tourism Regulatory Authority (TRA), our Auditors & Assessors Team
+      stands as a cornerstone of excellence in the tourism sector. With a group
+      of highly skilled professionals who are passionate about upholding the
+      highest standards, we are committed to delivering exceptional service and
+      adhering to sustainable tourism practices. Our team conducts comprehensive
+      assessments and audits to ensure alignment with the regulations and
+      guidelines set forth by the national tourism strategy. By collaborating
+      closely with stakeholders and the relevant Ministry, we continuously
+      strive to improve our services and contribute to the growth of the tourism
+      industry in Kenya. Transparent, ethical, and dedicated to responsible
+      tourism, our Auditors & Assessors Team ensures unforgettable experiences
+      while preserving the beauty and integrity of our destinations.
+    </p>
+  </div>
+  <br />
+  <div class="card-body w-100 mainCont">
+    <div class="row">
+      <div class="col-md-5 col-lg-5 col-xl-5 col-sm-5">
+        <h2>Directors</h2>
+        <div class="carousel-form-container" *ngIf="directors.length > 0">
+          <div class="carousel-container">
+            <owl-carousel-o [options]="autoPlayOptionsSmall">
+              <ng-template
+                carouselSlide
+                *ngFor="let slide of directors"
+                [id]="slide.id"
+              >
+                <div class="imgCont">
+                  <img
+                    class="card-img-top img-fluid w-100"
+                    [src]="slide.existingImage"
+                    [title]="slide.first_name"
+                    (error)="handleImageError($event)"
+                  />
+                  <div>
+                    <div class="mt-1">
+                      <p class="teamName">
+                        {{ slide.firstName }} {{ slide.lastName }}
+                      </p>
+                    </div>
+                    <div class="">
+                      <p class="teamPos">
+                        {{ slide.userType }}
+                      </p>
+                    </div>
+                    <div class="">
+                      <p class="teamDesc">
+                        {{ slide.bio }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </owl-carousel-o>
+          </div>
+        </div>
+        <div *ngIf="directors.length <= 0">No Directors present</div>
+      </div>
+      <div class="col-md-2 col-lg-2 col-xl-2 col-sm-2">
+      </div>
+      <div class="col-md-5 col-lg-5 col-xl-5 col-sm-5">
+        <h2>Managers</h2>
+        <div class="carousel-form-container" *ngIf="managers.length > 0">
+          <div class="carousel-container">
+            <owl-carousel-o [options]="autoPlayOptions">
+              <ng-template
+                carouselSlide
+                *ngFor="let slide of managers"
+                [id]="slide.id"
+              >
+                <div class="imgCont">
+                  <img
+                    class="card-img-top img-fluid w-100"
+                    [src]="slide.existingImage"
+                    [title]="slide.first_name"
+                    (error)="handleImageError($event)"
+                  />
+                  <div>
+                    <div class="mt-1">
+                      <p class="teamName">
+                        {{ slide.firstName }} {{ slide.lastName }}
+                      </p>
+                    </div>
+                    <div class="">
+                      <p class="teamPos">
+                        {{ slide.userType }}
+                      </p>
+                    </div>
+                    <div class="">
+                      <p class="teamDesc">
+                        {{ slide.bio }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </owl-carousel-o>
+          </div>
+        </div>
+        <div *ngIf="managers.length <= 0">No Managers present</div>
+      </div>
+    </div>
+    
+    <br>
+
+    <div class="row">
+      <h2>Assessors</h2>
+      <div class="col-md-12 col-lg-12 col-xl-12 col-sm-12">
+        <div class="carousel-form-container" *ngIf="assessors.length > 0">
+          <div class="carousel-container">
+            <owl-carousel-o [options]="autoPlayOptions">
+              <ng-template
+                carouselSlide
+                *ngFor="let slide of assessors"
+                [id]="slide.id"
+              >
+                <div class="imgCont">
+                  <img
+                    class="card-img-top img-fluid w-100"
+                    [src]="slide.existingImage"
+                    [title]="slide.first_name"
+                    (error)="handleImageError($event)"
+                  />
+                  <div>
+                    <div class="mt-1">
+                      <p class="teamName">
+                        {{ slide.firstName }} {{ slide.lastName }}
+                      </p>
+                    </div>
+                    <div class="">
+                      <p class="teamPos">
+                        {{ slide.position }}
+                      </p>
+                    </div>
+                    <div class="">
+                      <p class="teamDesc">
+                        {{ slide.bio }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </owl-carousel-o>
+          </div>
+        </div>
+        <div *ngIf="assessors.length <= 0">No Assessors present</div>
+      </div>
+    </div>
+
+    <br />
+
+    <div class="row">
+      <h2>Auditors</h2>
+      <div class="col-md-12 col-lg-12 col-xl-12 col-sm-12">
+        <div class="carousel-form-container" *ngIf="auditors.length > 0">
+          <div class="carousel-container">
+            <owl-carousel-o [options]="autoPlayOptions">
+              <ng-template
+                carouselSlide
+                *ngFor="let slide of auditors"
+                [id]="slide.id"
+              >
+                <div class="imgCont">
+                  <img
+                    class="card-img-top img-fluid w-100"
+                    [src]="slide.existingImage"
+                    [title]="slide.first_name"
+                  />
+                  <div>
+                    <div class="mt-1">
+                      <p class="teamName">
+                        {{ slide.firstName }} {{ slide.lastName }}
+                      </p>
+                    </div>
+                    <div class="">
+                      <p class="teamPos">
+                        {{ slide.position }}
+                      </p>
+                    </div>
+                    <div class="">
+                      <p class="teamDesc">
+                        {{ slide.bio }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </owl-carousel-o>
+          </div>
+        </div>
+        <div *ngIf="auditors.length <= 0">No Auditors present</div>
+      </div>
+    </div>
+  </div>
+</div>

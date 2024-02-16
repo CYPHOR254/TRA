@@ -1,0 +1,45 @@
+.mainCont {
+  background-color: #d0ddf0;
+  padding: 25px 65px;
+
+  .linksCont {
+    font-family: "Mulish";
+    font-style: normal;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 25px;
+    text-align: center;
+    letter-spacing: 0.08em;
+    margin-left: 50%;
+
+    a {
+      text-decoration: none;
+      color: #1e0f2e;
+      margin: 0 15px;
+    }
+  }
+
+  .chatIconCont {
+    position: fixed;
+    bottom: 9%;
+    right: 3%;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #2766bf;
+    z-index: 3;
+
+    p {
+      color: #f8f8f8;
+      font-size: 30px;
+      margin-left: -13px;
+
+      img {
+        position: absolute;
+        bottom: 27%;
+      }
+    }
+  }
+}
+ 
